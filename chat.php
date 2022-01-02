@@ -164,8 +164,7 @@ img{
 <body>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-button">View Groups</a> -->
+  <a href="main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
   <?php
     echo "<div id='sideGroup'><p>Choose Groups</p>";
     $stmt = $connection->prepare("select * from login where email=?");
@@ -180,7 +179,7 @@ img{
         $statement->execute();
         $stmt_result2 = $statement->get_result();
        
-        echo "<ul><form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/inter.php' method='post'>";
+        echo "<ul><form action='inter.php' method='post'>";
         while($rows =$stmt_result2->fetch_array()){
             $id2 = $rows['groupID'];
 
@@ -199,8 +198,7 @@ img{
     }
   
   ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button">Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php" class="w3-bar-item w3-button">Notification</a> -->
+  <a href="createGroup.php" class="w3-bar-item w3-button">Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
   <?php
 
       $notif = $connection ->prepare("select * from login where email=?");
@@ -217,7 +215,7 @@ img{
         $notif2->execute();
         $notif2_result=$notif2->get_result();
         $number = $notif2_result->num_rows;
-        echo "<a href='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php' class='w3-bar-item w3-button'>Notification <img src='notif.png' alt='Avatar' width='25%'>";
+        echo "<a href='notif.php' class='w3-bar-item w3-button'>Notification <img src='notif.png' alt='Avatar' width='25%'>";
        // echo "<div id='newNotif'><p>".$number."</p></div>";
        if($number>0){
           echo "<span class='badge'>".$number."</span>";
@@ -227,16 +225,20 @@ img{
        }
       }
     ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
+  <a href="preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
   <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/editChat.php" class="w3-bar-item w3-button">Edit Chat</a>
+  <a href="editChat.php" class="w3-bar-item w3-button">Edit Chat</a>
   <!-- <a href="#" class="w3-bar-item w3-button">Link 2</a>
   <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
   <?php
-    $conn = new mysqli("localhost","dave(2)","ensf409","group_chat");
+    $username="";
+    $password="";
+    $schema="";
+
+    $conn = new mysqli("localhost",$username,$password,$schema);
     if($conn->connect_error){
         die("Failed to connect: ".$conn->connect_error);
     }
@@ -300,94 +302,11 @@ img{
     $groupID = $_SESSION['groupID'];
     $_SESSION['groupID']=$groupID;
     ?>
-    <!-- <?php
-        //$groupID = $_POST['groupID'];
-
-        $groupID = $_SESSION['groupID'];
-
-        $stmtname = $connection->prepare("select * from group_head where groupID=?;");
-        $stmtname->bind_param("i",$groupID);
-        $stmtname->execute();
-        $stmt_result = $stmtname->get_result();
-        if( $stmt_result->num_rows>0){
-            $Gname= $stmt_result->fetch_assoc();
-            echo "<h1>Group: ".$Gname['groupNAME']."</h1>";
-        }
-
-        $stmt = $connection->prepare("select * from message where groupID=?;");
-        $stmt->bind_param("i",$groupID);
-        $stmt->execute();
-        $stmt_result = $stmt->get_result();
-        while($data = $stmt_result->fetch_array()){
-            $stmt2 = $connection->prepare("select * from login where loginID=?;");
-            $stmt2->bind_param("i",$data['senderID']);
-            $stmt2->execute();
-            $stmt2_result =$stmt2->get_result();
-            if($stmt2_result->num_rows>0){
-                $otherData=$stmt2_result->fetch_assoc();
-                $otherEmail = $otherData['email'];
-
-                if($otherEmail==$email){
-                    echo "<div class='container1'>";
-                    echo "<span class='time-right'>".$otherEmail."</span>";
-                    echo "<p>".$data['message']."</p>";
-                    // echo  "<span class="time-right">11:00</span>
-                    echo "</div>";
-                }
-                else{
-                    echo "<div class='darker'>";
-                    echo "<span class='time-left'>".$otherEmail."</span>";
-                    echo "<p>".$data['message']."</p>";
-                    // echo  "<span class="time-right">11:00</span>
-                    echo "</div>";
-                }
-            }
-        }
-    
-
-    ?> -->
-  <!-- <div class="container1">
-    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-    <p>Hello. How are you today?</p>
-    <span class="time-right">11:00</span>
-  </div>
-
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Hey! I'm fine. Thanks for asking!</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="container1">
-    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-    <p>Sweet! So, what do you wanna do today?</p>
-    <span class="time-right">11:02</span>
-  </div>
-
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-    <span class="time-left">11:05</span>
-  </div>
-
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-    <span class="time-left">11:05</span>
-  </div>
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-    <span class="time-left">11:05</span>
-  </div>
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-    <span class="time-left">11:05</span>
-  </div>-->
+   
+ 
 </div> 
 <div class="sticky">
-    <form action="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/sendMessage.php" method="POST">
+    <form action="sendMessage.php" method="POST">
         <?php
            // $_SESSION['groupID'] = $_POST['groupID']; //or whatever
         ?>
