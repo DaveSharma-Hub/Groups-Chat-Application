@@ -157,9 +157,8 @@ ul li {
 <body>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-button">View Groups</a> -->
-  <?php
+  <a href="main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
+   <?php
     echo "<div id='sideGroup'><p>Choose Groups</p>";
     $stmt = $connection->prepare("select * from login where email=?");
     $stmt->bind_param("s",$email);
@@ -173,7 +172,7 @@ ul li {
         $statement->execute();
         $stmt_result2 = $statement->get_result();
        
-        echo "<form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/inter.php' method='post'>";
+        echo "<form action='inter.php' method='post'>";
         while($rows =$stmt_result2->fetch_array()){
             $id2 = $rows['groupID'];
 
@@ -192,8 +191,7 @@ ul li {
     }
   
   ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button">Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php" class="w3-bar-item w3-button">Notification</a> -->
+  <a href="createGroup.php" class="w3-bar-item w3-button">Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
   <?php
 
       $notif = $connection ->prepare("select * from login where email=?");
@@ -210,7 +208,7 @@ ul li {
         $notif2->execute();
         $notif2_result=$notif2->get_result();
         $number = $notif2_result->num_rows;
-        echo "<a href='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
+        echo "<a href='notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
        // echo "<div id='newNotif'><p>".$number."</p></div>";
        if($number>0){
           echo "<span class='badge'>".$number."</span>";
@@ -220,13 +218,13 @@ ul li {
        }
       }
     ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
+  <a href="preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
   <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
+  <a href="editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
+  <a href="viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
   <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
 </div>
 
@@ -244,13 +242,13 @@ ul li {
   </div>
 </div>
 <div class="w3-container2">
- <form action="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/makingGroup.php" method="POST">
+ <form action="makingGroup.php" method="POST">
  <label for="fname">Group Name:</label><br>
   <input type="text" id="Gname" name="Gname" value=""><br>
   <label for="user">Choose Members:</label><br>
 
         <?php
-            $stmt = $connection->prepare("select * from login;"); //prevent sql injection                    $stmt->execute();
+            $stmt = $connection->prepare("select * from login;"); //prevent sql injection 
             $stmt->execute();
             $stmt_result = $stmt->get_result();
             $num=1;
