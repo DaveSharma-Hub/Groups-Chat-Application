@@ -1,7 +1,11 @@
 <?php
     include "session.php";
 
-    $conn = new mysqli("localhost","dave(2)","ensf409","group_chat");
+     $username="";
+    $password="";
+    $schema="";
+
+    $conn = new mysqli("localhost",$username,$password,$schema);
     $choice= $_POST['choice'];
     // echo $choice;
 
