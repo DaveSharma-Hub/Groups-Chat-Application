@@ -62,8 +62,7 @@ img{
 <body>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-button">View Groups</a> -->
+  <a href="main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
   <?php
     echo "<div id='sideGroup'><p>Choose Groups</p>";
     $stmt = $connection->prepare("select * from login where email=?");
@@ -78,7 +77,7 @@ img{
         $statement->execute();
         $stmt_result2 = $statement->get_result();
        
-        echo "<ul><form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/inter.php' method='post'>";
+        echo "<ul><form action='teamschat/inter.php' method='post'>";
         while($rows =$stmt_result2->fetch_array()){
             $id2 = $rows['groupID'];
 
@@ -97,8 +96,7 @@ img{
     }
   
   ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button">Create Group<img src="groups.jpg" alt='Avatar' width="25%"></a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php" class="w3-bar-item w3-button">Notification</a> -->
+  <a href="createGroup.php" class="w3-bar-item w3-button">Create Group<img src="groups.jpg" alt='Avatar' width="25%"></a>
   <?php
 
       $notif = $connection ->prepare("select * from login where email=?");
@@ -115,7 +113,7 @@ img{
         $notif2->execute();
         $notif2_result=$notif2->get_result();
         $number = $notif2_result->num_rows;
-        echo "<a href='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
+        echo "<a href='notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
        // echo "<div id='newNotif'><p>".$number."</p></div>";
        if($number>0){
           echo "<span class='badge'>".$number."</span>";
@@ -125,14 +123,13 @@ img{
        }
       }
     ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
+  <a href="preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
   <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
-  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
+  <a href="editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
+  <a href="viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
 </div>
 
 <div class="w3-indigo">
@@ -183,7 +180,7 @@ img{
                             <h5>".$fromEmail."</h5>
                       
                             <div class='w3-section'>
-                               <form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/friendRequest.php' method='POST'>
+                               <form action='friendRequest.php' method='POST'>
                                <input type='submit' value='Accept ".$fromEmail."' name='choice'>
                                <input type='submit' value='Decline ".$fromEmail."' name='choice'>
                                 </form>
@@ -200,27 +197,6 @@ img{
 
 
     ?>
-
-  <!-- " <div class='w3-container w3-center'>
-      <h3>Friend Request</h3>
-      <img src='img_avatar3.png' alt='Avatar' style='width:80%'>
-      <h5>".$fromEmail."</h5>
-
-      <div class='w3-section'>
-         <form action='#'>
-         <input type='submit' value='Accept'>
-      	</form>
-        <form action='#'>
-         <input type='submit' value='Decline'>
-      	</form>
-      </div>
-
-    </div> " -->
-
-
-  
-
-
 
 
 
