@@ -150,8 +150,7 @@ img{
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/main.php" class="w3-bar-item w3-button"><img src='main.png' alt='Avatar' width='20%'>Main Page</a>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-button">View Groups</a> -->
+  <a href="main.php" class="w3-bar-item w3-button"><img src='main.png' alt='Avatar' width='20%'>Main Page</a>
   <?php
     echo "<div id='sideGroup'><p>Choose Groups</p>";
     $stmt = $connection->prepare("select * from login where email=?");
@@ -166,7 +165,7 @@ img{
         $statement->execute();
         $stmt_result2 = $statement->get_result();
        
-        echo "<ul><form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/inter.php' method='post'>";
+        echo "<ul><form action='inter.php' method='post'>";
         while($rows =$stmt_result2->fetch_array()){
             $id2 = $rows['groupID'];
 
@@ -186,7 +185,7 @@ img{
   
   ?>
 
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button">Create Group <img src='groups.jpg' alt='Avatar' width='20%'></a><br>
+  <a href="createGroup.php" class="w3-bar-item w3-button">Create Group <img src='groups.jpg' alt='Avatar' width='20%'></a><br>
   <?php
 
       $notif = $connection ->prepare("select * from login where email=?");
@@ -203,7 +202,7 @@ img{
         $notif2->execute();
         $notif2_result=$notif2->get_result();
         $number = $notif2_result->num_rows;
-        echo "<a href='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
+        echo "<a href='notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
        // echo "<div id='newNotif'><p>".$number."</p></div>";
        if($number>0){
           echo "<span class='badge'>".$number."</span>";
@@ -213,12 +212,12 @@ img{
        }
       }
     ?>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
+  <a href="preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
   <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/editChat.php" class="w3-bar-item w3-button">Edit Chat</a>
+  <a href="editChat.php" class="w3-bar-item w3-button">Edit Chat</a>
   <a href="#" class="w3-bar-item w3-button">Link 2</a>
   <a href="#" class="w3-bar-item w3-button">Link 3</a>
 </div>
@@ -264,40 +263,16 @@ img{
 
         
 
-        // $statement = $connection->prepare("select * from login where email = ?"); //prevent sql injection
-        // $statement->bind_param("s",$email);
-        // $statement->execute();
-        // $statement_result = $statement->get_result();
-        // if($statement_result->num_rows > 0){
-        //     $login = $statement_result->fetch_assoc();
-        //     $statement = $connection->prepare("select * from information where loginID=?"); //prevent sql injection
-        //     $statement->bind_param("i",$login['loginID']);
-        //     $statement->execute();
-        //     $statement_result = $statement->get_result();
-        
-        
-        //     if($statement_result->num_rows > 0){
-        //             $data = $statement_result->fetch_assoc();
-        //             echo "<p>";
-        //             echo "<br>";
-        //             echo "Notes:";
-        //             echo "<br>";
-        //             echo $data['notes'];
-        //             echo "</p>";
-        //     }
-        // } 
+  
     ?>
-  <!-- <p>In this example, the sidebar is hidden (style="display:none")</p>
-  <p>It is shown when you click on the menu icon in the top left corner.</p>
-  <p>When it is opened, it shifts the page content to the right.</p>
-  <p>We use JavaScript to add a 25% left margin to the div element with id="main" when this happens. The value "25%" matches the width of the sidebar.</p> -->
+  
   </div>
     <?php
     // session_start();
     $holder=$_SESSION['formdata']; //or whatever
     $_SESSION['formdata'] = $holder; 
     ?>
-  <form action="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/edit.php" method="post" style="border:1px solid #ccc">
+  <form action="edit.php" method="post" style="border:1px solid #ccc">
         <div class="container">
           <h1>Change Group Name</h1>
           <p>Please type new group name</p>
@@ -317,19 +292,7 @@ img{
       </form>
     </div>
   
-  <!-- <script>
-  function w3_open() {
-    document.getElementById("main").style.marginLeft = "25%";
-    document.getElementById("mySidebar").style.width = "25%";
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("openNav").style.display = 'none';
-  }
-  function w3_close() {
-    document.getElementById("main").style.marginLeft = "0%";
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("openNav").style.display = "inline-block";
-  }
-  </script> -->
+  
   <script>
 function openLeftMenu() {
   document.getElementById("leftMenu").style.display = "block";
