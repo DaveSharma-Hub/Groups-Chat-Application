@@ -8,7 +8,11 @@
     $uname = $_POST['uname'];
     $pword =$_POST['pword'];
 
-    $conn= new mysqli("localhost","dave(2)","ensf409","group_chat");
+     $username="";
+    $password="";
+    $schema="";
+
+    $conn = new mysqli("localhost",$username,$password,$schema);
 
     if($conn->connect_error){
         die("Failed to connect: ".$con->connect_error);
