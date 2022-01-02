@@ -1,132 +1,3 @@
-
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-
-body {
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 20px;
-  text-align:center;
-}
-
-.w3-container2 .container1 {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.w3-container2 .darker {
-  border-color: #ccc;
-  background-color: #ddd;
-}
-
-.w3-container2 .container1::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.w3-container2 .container1 img {
-  float: left;
-  max-width: 60px;
-  width: 100%;
-  margin-right: 20px;
-  border-radius: 50%;
-}
-
-.w3-container2 .container1 img.right {
-  float: right;
-  margin-left: 20px;
-  margin-right:0;
-}
-
-.w3-container2 .time-right {
-  float: right;
-  color: #aaa;
-}
-
-.w3-container2 .time-left {
-  float: left;
-  color: #999;
-}
-</style>
-</head>
-<body>
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
-  <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-buton">View Groups</a>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button">Create Group</a>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout</a>
-</div>
-
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
-  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
-</div>
-
-<div class="w3-indigo">
-  <button class="w3-button w3-indigo w3-xlarge w3-left" onclick="openLeftMenu()">&#9776;</button>
-  <button class="w3-button w3-indigo w3-xlarge w3-right" onclick="openRightMenu()">&#9776;</button>
-  <div class="w3-container">
-    
-  </div>
-</div>
-<div class="w3-container2">
-  <div class="container1">
-    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-    <p>Hello. How are you today?</p>
-    <span class="time-right">11:00</span>
-  </div>
-
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Hey! I'm fine. Thanks for asking!</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="container1">
-    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-    <p>Sweet! So, what do you wanna do today?</p>
-    <span class="time-right">11:02</span>
-  </div>
-
-  <div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
-    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-    <span class="time-left">11:05</span>
-  </div>
-</div>
-
-<script>
-function openLeftMenu() {
-  document.getElementById("leftMenu").style.display = "block";
-}
-
-function closeLeftMenu() {
-  document.getElementById("leftMenu").style.display = "none";
-}
-
-function openRightMenu() {
-  document.getElementById("rightMenu").style.display = "block";
-}
-
-function closeRightMenu() {
-  document.getElementById("rightMenu").style.display = "none";
-}
-</script>
-
-</body>
-</html> -->
-
 <?php
   include 'session.php';
   include 'mainConnection.php';
@@ -322,9 +193,8 @@ img{
 <body>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-indigo" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
+  <a href="main.php" class="w3-bar-item w3-button"><img src="main.png" alt='Avatar' width="25%">Main Page</a>
   <br>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewGroups.php" class="w3-bar-item w3-button">View Groups</a> -->
 <?php
     echo "<div id='sideGroup'><p>Choose Groups</p>";
     $stmt = $connection->prepare("select * from login where email=?");
@@ -339,7 +209,7 @@ img{
         $statement->execute();
         $stmt_result2 = $statement->get_result();
        
-        echo "<form action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/inter.php' method='post'>";
+        echo "<form action='inter.php' method='post'>";
         while($rows =$stmt_result2->fetch_array()){
             $id2 = $rows['groupID'];
 
@@ -360,9 +230,8 @@ img{
   ?>
   <br>
   <br>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/createGroup.php" class="w3-bar-item w3-button"> Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
+  <a href="createGroup.php" class="w3-bar-item w3-button"> Create Group <img src="groups.jpg" alt='Avatar' width="25%"></a>
   <br>
-  <!-- <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php" class="w3-bar-item w3-button"> <img src="notif.png" alt='Avatar' width="20%">Notification -->
     <?php
 
       $notif = $connection ->prepare("select * from login where email=?");
@@ -379,7 +248,7 @@ img{
         $notif2->execute();
         $notif2_result=$notif2->get_result();
         $number = $notif2_result->num_rows;
-        echo "<a href='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
+        echo "<a href='notif.php' class='w3-bar-item w3-button'> Notification <img src='notif.png' alt='Avatar' width='20%'>";
        // echo "<div id='newNotif'><p>".$number."</p></div>";
        if($number>0){
           echo "<span class='badge'>".$number."</span>";
@@ -390,14 +259,13 @@ img{
       }
     ?>
   <br>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
+  <a href="preventReverse.php" class="w3-bar-item w3-button">Logout<img src='logout.png' alt='Avatar' width='20%'></a>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-indigo" style="display:none;right:0;" id="rightMenu">
   <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
-  <a href="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
-  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
+  <a href="editPersonal.php" class="w3-bar-item w3-button">Edit Personal Information</a>
+  <a href="viewPersonal.php" class="w3-bar-item w3-button">View Information</a>
 </div>
 
 <div class="w3-indigo">
@@ -418,7 +286,7 @@ img{
 <p>Search Friends:</p>
 
 <!--Make sure the form has the autocomplete function switched off:-->
-<form autocomplete="off" action="http://localhost:3000/Users/Daves/Documents/Practice/teamschat/makeFriends.php" method="POST">
+<form autocomplete="off" action="makeFriends.php" method="POST">
   <div class="autocomplete" style="width:300px;">
     <input id="myInput" type="text" name="friends" required>
   </div>
@@ -455,7 +323,7 @@ img{
           echo "<div class='name'>";
           // echo "&nbsp;".$friendEmail."&nbsp;&nbsp;&nbsp;&nbsp;
         // echo &nbsp;&nbsp;&nbsp; Accepted";
-          echo "<form id='personalChat' action='http://localhost:3000/Users/Daves/Documents/Practice/teamschat/personalChat.php' method='POST'>";
+          echo "<form id='personalChat' action='personalChat.php' method='POST'>";
           echo "<input type='submit' value='Chat with&nbsp;".$friendEmail."' id='login-form-submit' name='chat'>";
           echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
           echo "<label for='personalChat' value='".$friendEmail."' name='label'><b>".$friendEmail."&nbsp;&nbsp;&nbsp; Accepted</b></label>";
@@ -477,37 +345,7 @@ img{
 ?>
 </ul>
 
-  <!-- <li class='friend selected'>
-    <div class='name'>
-      Andres Perez
-    </div>
-  </li>
-  <li class='friend'>
-    <div class='name'>
-      Leah Slaten
-    </div>
-  </li>
-  <li class='friend'>
-    <div class='name'>
-      Mario Martinez
-    </div>
-  </li>
-  <li class='friend'>
-    <div class='name'>
-      Cynthia Lo
-    </div>
-  </li>
-  <li class='friend'>
-    <div class='name'>
-      Sally Lin
-    </div>
-  </li>
-  <li class='friend'>
-    <div class='name'>
-      Danny Tang
-    </div>
-  </li>
-</ul> -->
+  
 
 <?php
   $stmt = $connection->prepare("select * from login");
@@ -618,7 +456,6 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing all the country names in the world:*/
-// var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
 var countries =  <?php echo json_encode($array); ?>;
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), countries);
