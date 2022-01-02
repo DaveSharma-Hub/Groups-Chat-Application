@@ -5,14 +5,7 @@
         //$groupID = $_POST['groupID'];
         $groupID = $_SESSION['groupID'];
 
-        // $stmtname = $connection->prepare("select * from group_head where groupID=?;");
-        // $stmtname->bind_param("i",$groupID);
-        // $stmtname->execute();
-        // $stmt_result = $stmtname->get_result();
-        // if( $stmt_result->num_rows>0){
-        //     $Gname= $stmt_result->fetch_assoc();
-        //     echo "<h1>Group: ".$Gname['groupNAME']."</h1>";
-        // }
+       
 
         $stmt = $connection->prepare("select * from message where groupID=?;");
         $stmt->bind_param("i",$groupID);
