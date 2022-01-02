@@ -4,8 +4,12 @@
     $name = $_POST['name'];
     
     $id= $_SESSION['groupID'];
-    $conn = new mysqli("localhost","dave(2)","ensf409","group_chat");
 
+     $username="";
+    $password="";
+    $schema="";
+
+    $conn = new mysqli("localhost",$username,$password,$schema);
     if($conn->connect_error){
         die($conn->connect_error);
     }else{
